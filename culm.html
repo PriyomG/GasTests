@@ -1,0 +1,3175 @@
+<html>
+<body>
+<canvas id="canvasId" width="800" height="500" style="border: 1px solid black;"> </canvas>
+<script>
+var counter = 0; //Counter will determine which slide is playing
+let y = 100;
+var menu = false;
+var menuCheck = false;
+var bn = 0;
+var gl = 0;
+var cl = 0;
+var co =0;
+var lime = 0;
+var cly = 235;
+var clLength = 0;
+var coy = 70;
+var coLength = 0; 
+let checkx;
+let checky;
+
+canvas = document.getElementById("canvasId");
+if (canvas.getContext) ctx = canvas.getContext("2d"); 
+else alert("Canvas element is not available");
+
+draw();
+
+function splashScreen()
+{
+ctx.clearRect(0,0,800,500);
+ctx.font = "10px Arial";
+ctx.strokeText("Left Click to Continue...", 650,470);
+ctx.font = "100px Arial";
+ctx.strokeText("Lawful", 100, y+50); 
+ctx.font = "100px Arial";
+ctx.strokeText("Science", 100, y+150);  
+ctx.font = "100px Arial";
+ctx.strokeText("Presents", 100, y+250); 
+y=y-10;
+const time = setInterval(draw,1000);
+canvas.addEventListener('click',change);
+}
+
+function change()
+{
+
+if(menu == false && menuCheck == false)
+{
+counter = counter + 1;
+draw();
+}
+
+else if(checkx>=500 && checkx<=700 && menu == true && checky>=20 && checky<=120)
+ {
+   counter = counter + 1;
+   draw();
+ }
+
+else if(checkx>=450 && checkx<= 600 && menu == true && checky>=150 && checky <=250)
+{
+  counter = counter +5;
+  draw();
+}
+
+else if(checkx>=450 && checkx<= 600 && menu == true && checky>=300 && checky <=400)
+{
+  counter = counter + 7;
+  draw();
+}
+
+else if(checkx>=610 && checkx<= 760 && menu == true && checky>=150 && checky <=250)
+{
+  counter = counter +3;
+  draw();
+}
+
+else if(checkx>=610 && checkx<= 760 && menu == true && checky>=300 && checky <=400)
+{
+  counter = counter +9;
+  draw();
+}
+
+else if(checkx>=0 && checkx<= 30 && menu == false && menuCheck == true && checky>=0 && checky <=20) //Return to main menu every time you press top left corner
+{
+  counter = 1;
+  draw();
+}
+
+else if(checkx>=770 && checkx<=800 && menu == true && menuCheck == false && checky>=480 && checky<=500) //Go to credits scene every time you press bottom right corner
+{
+  counter = 13;
+  draw();
+}
+
+else if(checkx>=540 && checkx<=600 && menu == false && menuCheck == true && counter == 3 && checky>=310 && checky<=370 && bn==0)
+{
+ bn = bn + 1;
+ draw();
+}
+
+else if(checkx>=680 && checkx<=755 && menu == false && menuCheck == true && counter == 3 && checky>=230 && checky<=370 && bn==1)
+{
+ bn = bn + 1;
+ draw();
+}
+
+else if(checkx>=210 && checkx<=410 && menu == false && menuCheck == true && counter == 3 && checky>=230 && checky<=240 && bn==2)
+{
+ bn = bn + 1;
+ draw();
+}
+
+else if(checkx>=60 && checkx<=160 && menu == false && menuCheck == true && counter == 3 && checky>=160 && checky<=380 && bn==3)
+{
+ bn = bn + 1;
+ draw();
+}
+
+else if(checkx>=310 && checkx<=510 && menu == false && menuCheck == true && counter == 5 && checky>=230 && checky<=240 && gl==0)
+{
+ gl = gl +1;
+ draw();
+}
+
+else if(checkx>=280 && checkx<=480 && menu == false && menuCheck == true && counter == 5 && checky>=200 && checky<=240 && gl==1)
+{
+ gl = gl + 1;
+ draw();
+}
+
+else if(checkx>=60 && checkx<=160 && menu == false && menuCheck == true && counter == 5 && checky>=160 && checky<=380 && gl==2)
+{
+ gl = gl + 1;
+ draw();
+}
+
+else if(checkx>=60 && checkx<=160 && menu == false && menuCheck == true && counter == 5 && checky>=160 && checky<=380 && gl==3)
+{
+ gl = gl + 1;
+ draw();
+}
+
+else if(checkx>=710 && checkx<=785 && menu == false && menuCheck == true && counter == 9 && checky>=260 && checky<=370 && cl==0)
+{
+  cl = cl +1;
+  draw();
+}
+
+else if(checkx>=625 && checkx<= 700 && menu == false && menuCheck == true && counter == 9 && checky>=260 && checky <=370 && cl==1)
+{
+  cl = cl +1;
+  draw();
+}
+
+else if(checkx>=350 && checkx<= 390 && menu == false && menuCheck == true && counter == 9 && checky>=325 && checky <=360 && cl==2)
+{
+  cl = cl +1;
+  draw();
+}
+
+else if(checkx>=160 && checkx<= 185 && menu == false && menuCheck == true && counter == 9 && checky>=245 && checky <=345 && cl==3)
+{
+  cl = cl +1;
+  draw();
+}
+
+else if(checkx>=150 && checkx<= 195 && menu == false && menuCheck == true && counter == 9 && checky>=210 && checky <=245 && cl==4)
+{
+  cl = cl +1;
+  draw();
+}
+
+else if(checkx>=465 && checkx<= 473 && menu == false && menuCheck == true && counter == 9 && checky>=250 && checky <=325 && cl==5)
+{
+  cl = cl +1;
+  draw();
+}
+
+else if(checkx>=635 && checkx<= 710 && menu == false && menuCheck == true && counter == 7 && checky>=360 && checky <=470 && co==0)
+{
+  co = co +1;
+  draw();
+}
+
+else if(checkx>=80 && checkx<= 220 && menu == false && menuCheck == true && counter == 7 && checky>=310 && checky <=345 && co==1)
+{
+  co = co +1;
+  draw();
+}
+
+else if(checkx>=470 && checkx<= 480 && menu == false && menuCheck == true && counter == 7 && checky>=315 && checky <=365 && co==2)
+{
+  co = co +1;
+  draw();
+}
+
+else if(checkx>=635 && checkx<= 710 && menu == false && menuCheck == true && counter == 11 && checky>=260 && checky <=370 && lime==0)
+{
+  lime = lime +1 ;
+  draw();
+}
+
+else if(checkx>=710 && checkx<= 785 && menu == false && menuCheck == true && counter == 11 && checky>=260 && checky <=370 && lime==1)
+{
+  lime = lime +1;
+  draw();
+}
+
+else if(checkx>=300 && checkx<= 340 && menu == false && menuCheck == true && counter == 11 && checky>=268 && checky <=298 && lime==2)
+{
+  lime = lime +1;
+  draw();
+}
+
+else if(checkx>=200 && checkx<= 240 && menu == false && menuCheck == true && counter == 11 && checky>=325 && checky <=360 && lime==3)
+{
+  lime = lime +1;
+  draw();
+}
+
+else if(checkx>=210 && checkx<= 230 && menu == false && menuCheck == true && counter == 11 && checky>=360 && checky <=440 && lime==4)
+{
+  lime = lime +1;
+  draw();
+}
+
+else if(checkx>=210 && checkx<= 230 && menu == false && menuCheck == true && counter == 11 && checky>=360 && checky <=440 && lime==5)
+{
+  lime = lime +1;
+  draw();
+}
+
+else if(checkx>=210 && checkx<= 230 && menu == false && menuCheck == true && counter == 11 && checky>=360 && checky <=440 && lime==6)
+{
+  lime = lime +1;
+  draw();
+}
+
+}
+
+
+function mainMenu()
+{
+ menuCheck = false;
+ ctx.clearRect(0,0,800,500);
+ ctx.fillStyle = "black";
+ ctx.fillRect(400,0,15,500);
+bn=0;
+ gl = 0;
+ cl = 0;
+ co=0;
+ lime=0;
+ cly = 235;
+ clLength = 0;
+ coy = 70;
+ coLength = 0; 
+ lime =0; 
+ menu = true; 
+ canvas.addEventListener("mousemove",coors,false);
+ ctx.fillStyle = "#D3D3D3";
+ ctx.fillRect(500,20,200,100);
+ ctx.fillRect(450,150,150,100);
+ ctx.fillRect(610,150,150,100);
+ ctx.fillRect(450,300,150,100);
+ ctx.fillRect(610,300,150,100);
+ ctx.fillStyle = "black";
+ ctx.fillStyle = "black";
+ ctx.font="20px Arial";
+ ctx.fillText("Burning Splint Test", 515, 75);
+ ctx.font = "14px Arial";
+ ctx.fillText("Cobalt(II) Chloride Test", 452, 205);
+ ctx.font = "18px Arial";
+ ctx.fillText("Chlorine Test", 470, 360);
+ ctx.font = "16px Arial";
+ ctx.fillText("Glowing Splint Test", 615, 205);
+ ctx.font = "18px Arial";
+ ctx.fillText("Limewater Test", 620, 360);
+ ctx.beginPath();
+ ctx.strokeStyle = "grey";
+ ctx.moveTo(20,20);
+ ctx.lineTo(220,20);
+ ctx.lineTo(220,75);
+ ctx.lineTo(20,75);
+ ctx.stroke();
+ ctx.fillStyle = "grey";
+ ctx.fill();
+ ctx.fillStyle = "black";
+ ctx.font = "36px Arial";
+ ctx.fillText("GAS TEST", 30,60);
+ ctx.font = "17px Arial";
+ ctx.strokeStyle = "blue";
+ ctx.strokeText("DESCRIPTION:", 20, 120);
+ ctx.fillText("This tutorial/game demonstration will help",20, 145);
+ ctx.fillText("teachers teach their students about various gas",20,165);
+ ctx.fillText("tests. This is a part of the Grade 10 curriculum",20,185);
+ ctx.fillText("and is used to determine the unknown gas",20,205);
+ ctx.fillText("as well as certain reactions.",20,225);
+ ctx.strokeText("INSTRUCTIONS:",20,265);
+ ctx.fillText("Click on one of the experiments on the right side",20,290);
+ ctx.fillText("to begin! Then, left-click to continue to the", 20, 310);
+ ctx.fillText("experiment!",20,330);
+ ctx.fillText("Click on top-left corner anytime you want to", 20, 370);
+ ctx.fillText("return to this menu! Click on the bottom-right", 20, 390);
+ ctx.fillText("corner when you are on this menu to go to the",20,410);
+ ctx.fillText("credits section.",20,430);
+
+}
+
+function coors(event)
+{ //https://www.w3schools.com/jsref/event_pagex.asp
+ checkx=event.pageX - canvas.offsetLeft; //https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX
+ checky =event.pageY - canvas.offsetTop;
+}
+
+function bnTestExplained()
+{
+menuCheck = false;
+menu = false;
+ctx.clearRect(0,0,800,500);
+ctx.font = "55px Arial";
+ctx.fillText("Explanation:", 250,75); 
+ctx.font = "30px Arial";
+ctx.fillText("Test for Hydrogen using a Burning Splint!", 130,120); 
+ctx.font = "20px Arial";
+ctx.fillText("Hydrogen is present when a pop sound is heard after placing a burning splint", 60,150); 
+ctx.font = "20px Arial";
+ctx.fillText(" inside a test tube with magnesium ribbon(s) and hydrochloric acid solution", 60,175); 
+ctx.font = "30px Arial";
+ctx.fillText("Steps*", 350,250); 
+ctx.font = "20px Arial";
+ctx.fillText("1) Place Mg(s) + HCl(aq) in a test tube ", 100,290);
+ctx.font = "20px Arial";
+ctx.fillText("2) This turns into MgCl(s) + H(g) ", 100,315);
+ctx.font = "20px Arial";
+ctx.fillText("3) Light splint on fire, then place into test tube and hear a ‘pop’ sound ", 100,340);
+ctx.font = "20px Arial";
+ctx.fillText("4) This indicates that there is hydrogen ", 100,365);
+ctx.font = "20px Arial";
+ctx.font = "10px Arial";
+ctx.fillText("*Assuming all safety precautions and materials are present and followed", 100,425);
+}
+
+function burningTest()
+{
+menu = false;
+menuCheck = true;
+if(bn==0)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(425,380);
+ctx.lineTo(400,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame (Orange Section)
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(412,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.strokeStyle="red"; //Flame (Red Section)
+ctx.beginPath();
+ctx.moveTo(406,260);
+ctx.lineTo(419,260);
+ctx.lineTo(412,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(410,230);
+ctx.lineTo(410,240);
+ctx.lineTo(210,240);
+ctx.lineTo(210,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(680,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(698,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("HCl",700,310);
+ctx.strokeStyle="#cfd1e8"; //Magnesium Ribbon #1
+ctx.beginPath();
+ctx.moveTo(550,310);
+ctx.lineTo(600,360);
+ctx.lineTo(590,370);
+ctx.lineTo(540,320);
+ctx.stroke();
+ctx.fillStyle="#cfd1e8";
+ctx.fill();
+ctx.beginPath(); //Magnesium Ribbon #2
+ctx.moveTo(590,310);
+ctx.lineTo(540,360);
+ctx.lineTo(550,370);
+ctx.lineTo(600,320)
+ctx.stroke();
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Press on the magnesium ribbons (looks like an X) to place",50,50);
+ctx.fillText("inside the flask", 50, 75);
+}
+if(bn==1)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(425,380);
+ctx.lineTo(400,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame (Orange Section)
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(412,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.strokeStyle="red"; //Flame (Red Section)
+ctx.beginPath();
+ctx.moveTo(406,260);
+ctx.lineTo(419,260);
+ctx.lineTo(412,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(410,230);
+ctx.lineTo(410,240);
+ctx.lineTo(210,240);
+ctx.lineTo(210,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(680,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(698,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("HCl",700,310);
+ctx.strokeStyle="#cfd1e8"; //Magnesium Ribbon #1
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(140,360);
+ctx.lineTo(130,370);
+ctx.lineTo(80,320);
+ctx.stroke();
+ctx.fillStyle="#cfd1e8";
+ctx.fill();
+ctx.beginPath(); //Magnesium Ribbon #2
+ctx.moveTo(130,310);
+ctx.lineTo(80,360);
+ctx.lineTo(90,370);
+ctx.lineTo(140,320)
+ctx.stroke();
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Press on the bottle of HCl(aq) to add inside flask",50,50);
+}
+if(bn==2)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath(); //HCl inside the flask
+ctx.fillStyle="#a6a49d";
+ctx.strokeStyle="#a6a49d";
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(85,230);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(425,380);
+ctx.lineTo(400,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame (Orange Section)
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(412,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.strokeStyle="red"; //Flame (Red Section)
+ctx.beginPath();
+ctx.moveTo(406,260);
+ctx.lineTo(419,260);
+ctx.lineTo(412,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(410,230);
+ctx.lineTo(410,240);
+ctx.lineTo(210,240);
+ctx.lineTo(210,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(680,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(698,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("HCl",700,310);
+ctx.strokeStyle="#cfd1e8"; //Magnesium Ribbon #1
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(140,360);
+ctx.lineTo(130,370);
+ctx.lineTo(80,320);
+ctx.stroke();
+ctx.fillStyle="#cfd1e8";
+ctx.fill();
+ctx.beginPath(); //Magnesium Ribbon #2
+ctx.moveTo(130,310);
+ctx.lineTo(80,360);
+ctx.lineTo(90,370);
+ctx.lineTo(140,320)
+ctx.stroke();
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Press on the splint to light it on fire",50,50);
+}
+if(bn==3)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath(); //HCl inside the flask
+ctx.fillStyle="#a6a49d";
+ctx.strokeStyle="#a6a49d";
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(85,230);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(425,380);
+ctx.lineTo(400,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame on Candle (Orange Section)
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(412,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.beginPath(); //Flame on Splint (Orange Section)
+ctx.moveTo(180,230);
+ctx.lineTo(205,230);
+ctx.lineTo(192,200);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle="red"; //Flame on Candle (Red Section)
+ctx.beginPath();
+ctx.moveTo(406,260);
+ctx.lineTo(419,260);
+ctx.lineTo(412,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.beginPath(); //Flame on Splint (Red Section)
+ctx.moveTo(186,230);
+ctx.lineTo(199,230);
+ctx.lineTo(192,210);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(380,230);
+ctx.lineTo(380,240);
+ctx.lineTo(180,240);
+ctx.lineTo(180,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(680,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(698,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("HCl",700,310);
+ctx.strokeStyle="#cfd1e8"; //Magnesium Ribbon #1
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(140,360);
+ctx.lineTo(130,370);
+ctx.lineTo(80,320);
+ctx.stroke();
+ctx.fillStyle="#cfd1e8";
+ctx.fill();
+ctx.beginPath(); //Magnesium Ribbon #2
+ctx.moveTo(130,310);
+ctx.lineTo(80,360);
+ctx.lineTo(90,370);
+ctx.lineTo(140,320)
+ctx.stroke();
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Press on the flask to put splint inside",50,50);
+}
+if(bn==4)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath(); //HCl inside the flask
+ctx.fillStyle="#a6a49d";
+ctx.strokeStyle="#a6a49d";
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(85,230);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(425,380);
+ctx.lineTo(400,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame
+ctx.beginPath();
+ctx.moveTo(400,260);
+ctx.lineTo(425,260);
+ctx.lineTo(412,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.strokeStyle="red";
+ctx.beginPath();
+ctx.moveTo(406,260);
+ctx.lineTo(419,260);
+ctx.lineTo(412,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(105,110);
+ctx.lineTo(115,110);
+ctx.lineTo(115,310);
+ctx.lineTo(105,310);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(680,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(698,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("HCl",700,310);
+ctx.strokeStyle="#cfd1e8"; //Magnesium Ribbon #1
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(140,360);
+ctx.lineTo(130,370);
+ctx.lineTo(80,320);
+ctx.stroke();
+ctx.fillStyle="#cfd1e8";
+ctx.fill();
+ctx.beginPath(); //Magnesium Ribbon #2
+ctx.moveTo(130,310);
+ctx.lineTo(80,360);
+ctx.lineTo(90,370);
+ctx.lineTo(140,320)
+ctx.stroke();
+ctx.fill();
+ctx.fillStyle="black";
+ctx.font = "25px Arial";
+ctx.fillText("*POP*",150,150);
+ctx.fillText("Hydrogen is Present! Click on the top left corner to return",50,50);
+ctx.fillText("to the menu", 50, 75);
+}
+}
+
+function glTestExplained()
+{
+menu = false;
+ctx.clearRect(0,0,800,500);
+ctx.font = "55px Arial";
+ctx.fillText("Explanation:", 250,75); 
+ctx.font = "30px Arial";
+ctx.fillText("Test for Oxygen Gas using a Glowing Splint!", 130,120); 
+ctx.font = "20px Arial";
+ctx.fillText("Oxygen will reignite a glowing splint to a flame again when coming in contact", 60,150); 
+ctx.font = "20px Arial";
+ctx.fillText("with each other.", 360,175); 
+ctx.font = "30px Arial";
+ctx.fillText("Steps*", 350,250); 
+ctx.font = "20px Arial";
+ctx.fillText("1) Light splint on fire ", 100,290);
+ctx.font = "20px Arial";
+ctx.fillText("2) Blow out splint (turns into a glowing splint) ", 100,315);
+ctx.font = "20px Arial";
+ctx.fillText("3) Put splint inside test tube/flask with oxygen ", 100,340);
+ctx.font = "20px Arial";
+ctx.fillText("4) If glowing splint reignites, there is oxygen present ", 100,365);
+ctx.font = "20px Arial";
+ctx.font = "10px Arial";
+ctx.fillText("*Assuming all safety precautions and materials are present and followed", 100,425);
+}
+
+function glowingTest()
+{
+menu = false;
+menuCheck = true;
+if(gl==0)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(525,380);
+ctx.lineTo(500,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(512,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.strokeStyle="red";
+ctx.beginPath();
+ctx.moveTo(506,260);
+ctx.lineTo(519,260);
+ctx.lineTo(512,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(510,230);
+ctx.lineTo(510,240);
+ctx.lineTo(310,240);
+ctx.lineTo(310,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Press on the splint to light it on fire",50,50);
+}
+if(gl==1)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(525,380);
+ctx.lineTo(500,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(480,230);
+ctx.lineTo(480,240);
+ctx.lineTo(280,240);
+ctx.lineTo(280,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame on Candle (Orange Section)
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(512,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.beginPath(); //Flame on Splint (Orange Section)
+ctx.moveTo(280,230);
+ctx.lineTo(305,230);
+ctx.lineTo(292,200);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle="red"; //Flame on Candle (Red Section)
+ctx.beginPath();
+ctx.moveTo(506,260);
+ctx.lineTo(519,260);
+ctx.lineTo(512,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.beginPath(); //Flame on Splint (Red Section)
+ctx.moveTo(286,230);
+ctx.lineTo(299,230);
+ctx.lineTo(292,210);
+ctx.stroke();
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Press on the splint to blow the flame out",50,50);
+}
+if(gl==2)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(525,380);
+ctx.lineTo(500,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(480,230);
+ctx.lineTo(480,240);
+ctx.lineTo(280,240);
+ctx.lineTo(280,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame on Candle (Orange Section)
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(512,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.fillStyle="black";
+ctx.strokeStyle="black";
+ctx.beginPath(); //Burnt Section of Splint (Black)
+ctx.moveTo(280,230);
+ctx.lineTo(280,240);
+ctx.lineTo(310,240);
+ctx.lineTo(310,230);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle="red"; //Flame on Candle (Red Section)
+ctx.beginPath();
+ctx.moveTo(506,260);
+ctx.lineTo(519,260);
+ctx.lineTo(512,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.beginPath(); //Burnt Section of Splint (Red)
+ctx.moveTo(284,234);
+ctx.lineTo(284,236);
+ctx.lineTo(306,236);
+ctx.lineTo(306,234);
+ctx.stroke();
+ctx.fill();
+ctx.fillStyle="black";
+ctx.strokeStyle="black";
+ctx.font = "25px Arial";
+ctx.fillText("Press on the flask to put glowing splint inside",50,50);
+}
+if(gl==3)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(525,380);
+ctx.lineTo(500,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(105,110);
+ctx.lineTo(115,110);
+ctx.lineTo(115,160);
+ctx.lineTo(105,160);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame on Candle (Orange Section)
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(512,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.strokeStyle="red"; //Flame on Candle (Red Section)
+ctx.beginPath();
+ctx.moveTo(506,260);
+ctx.lineTo(519,260);
+ctx.lineTo(512,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.fillStyle="black";
+ctx.strokeStyle="black";
+ctx.font = "25px Arial";
+ctx.fillText("Press on the flask again to take out the splint",50,50);
+}
+if(gl==4)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(60,380);
+ctx.lineTo(160,380);
+ctx.lineTo(135,230);
+ctx.lineTo(135,160);
+ctx.lineTo(85,160);
+ctx.lineTo(85,230);
+ctx.lineTo(60,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="#61411e"; //Flame Stick
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(525,380);
+ctx.lineTo(500,380);
+ctx.stroke();
+ctx.fillStyle = "#61411e";
+ctx.fill();
+ctx.strokeStyle="#d1af8a"; //Splint
+ctx.beginPath();
+ctx.moveTo(480,230);
+ctx.lineTo(480,240);
+ctx.lineTo(280,240);
+ctx.lineTo(280,230);
+ctx.stroke();
+ctx.fillStyle="#d1af8a";
+ctx.fill();
+ctx.strokeStyle="orange"; //Flame on Candle (Orange Section)
+ctx.beginPath();
+ctx.moveTo(500,260);
+ctx.lineTo(525,260);
+ctx.lineTo(512,230);
+ctx.stroke();
+ctx.fillStyle="orange";
+ctx.fill();
+ctx.beginPath(); //Flame on Splint (Orange Section)
+ctx.moveTo(280,230);
+ctx.lineTo(305,230);
+ctx.lineTo(292,200);
+ctx.stroke();
+ctx.fill();
+ctx.strokeStyle="red"; //Flame on Candle (Red Section)
+ctx.beginPath();
+ctx.moveTo(506,260);
+ctx.lineTo(519,260);
+ctx.lineTo(512,240);
+ctx.stroke();
+ctx.fillStyle="red";
+ctx.fill();
+ctx.beginPath(); //Flame on Splint (Red Section)
+ctx.moveTo(286,230);
+ctx.lineTo(299,230);
+ctx.lineTo(292,210);
+ctx.stroke();
+ctx.fill();
+ctx.font = "25px Arial";
+ctx.fillStyle="black";
+ctx.fillText("Oxygen is Present! Click on the top left corner to return",50,50);
+ctx.fillText("to the menu",50,75);
+}
+}
+function cobaltChlorideTest()
+{
+menu = false;
+menuCheck = true;
+if(co==0)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Hotplate surface
+ctx.moveTo(75,300);
+ctx.lineTo(75,310);
+ctx.lineTo(225,310);
+ctx.lineTo(225,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of hotplate
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(210,310);
+ctx.lineTo(220,345);
+ctx.lineTo(80,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.beginPath(); //Base rect button
+ctx.moveTo(100,315);
+ctx.lineTo(100,318);
+ctx.lineTo(168,318);
+ctx.lineTo(168,315);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.beginPath();//Red button
+ctx.strokeStyle = "red";
+ctx.arc(190,325,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.strokeStyle ="grey";//water bottle base
+ctx.beginPath();
+ctx.roundRect(635,360,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //water bottle cap
+ctx.roundRect(648,330,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.lineWidth = 10;
+ctx.strokeStyle = "grey"; //Spray tube 
+ctx.beginPath();
+ctx.moveTo(668,330);
+ctx.lineTo(668,290);
+ctx.lineWidth = 8; 
+ctx.lineTo(648,300); 
+ctx.stroke();
+ctx.lineWidth = 1; 
+ctx.font = "15px Arial"; //Words on Water
+ctx.fillText("Water",645,410);
+ctx.fillStyle = "brown";//Test tube rack
+ctx.fillRect(405,335,20,100);
+ctx.fillRect(405,375,200,10);
+ctx.fillRect(405,405,200,10);
+ctx.fillRect(605,335,20,100);
+ctx.fillStyle = "grey"; //Test Tubes
+ctx.fillRect(437,345,15,90);
+ctx.fillRect(467,345,15,90);
+ctx.fillStyle = "red"; //Litmus
+ctx.fillRect(440,315,10,50);
+ctx.fillStyle = "blue"; //Litmus
+ctx.fillRect(470,315,10,50);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(175,150);
+ctx.lineTo(175,80);
+ctx.lineTo(125,80);
+ctx.lineTo(125,150);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.fillStyle = "black";
+ctx.fillText("Press the water to pour it into the flask ",400,50);
+}
+if (co==1)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Hotplate surface
+ctx.moveTo(75,300);
+ctx.lineTo(75,310);
+ctx.lineTo(225,310);
+ctx.lineTo(225,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of hotplate
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(210,310);
+ctx.lineTo(220,345);
+ctx.lineTo(80,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.beginPath(); //Base rect button
+ctx.moveTo(100,315);
+ctx.lineTo(100,318);
+ctx.lineTo(168,318);
+ctx.lineTo(168,315);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.beginPath();//Red button
+ctx.strokeStyle = "red";
+ctx.arc(190,325,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.strokeStyle ="grey";//water bottle base
+ctx.beginPath();
+ctx.roundRect(635,360,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //water bottle cap
+ctx.roundRect(648,330,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.lineWidth = 10;
+ctx.strokeStyle = "grey"; //Spray tube 
+ctx.beginPath();
+ctx.moveTo(668,330);
+ctx.lineTo(668,290);
+ctx.lineWidth = 8; 
+ctx.lineTo(648,300); 
+ctx.stroke();
+ctx.lineWidth = 1; 
+ctx.font = "15px Arial"; //Words on Water
+ctx.fillText("Water",645,410);
+ctx.fillStyle = "brown";//Test tube rack
+ctx.fillRect(405,335,20,100);
+ctx.fillRect(405,375,200,10);
+ctx.fillRect(405,405,200,10);
+ctx.fillRect(605,335,20,100);
+ctx.fillStyle = "grey"; //Test Tubes
+ctx.fillRect(437,345,15,90);
+ctx.fillRect(467,345,15,90);
+ctx.fillStyle = "red"; //Litmus
+ctx.fillRect(440,315,10,50);
+ctx.fillStyle = "blue"; //Litmus
+ctx.fillRect(470,315,10,50);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(175,150);
+ctx.lineTo(175,80);
+ctx.lineTo(125,80);
+ctx.lineTo(125,150);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(185,225);
+ctx.lineTo(115,225);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.fillStyle = "black";
+ctx.fillText("Press the red button to cause the water to boil on the hotplate ",50,50);
+}
+
+if (co==2)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Hotplate surface
+ctx.moveTo(75,300);
+ctx.lineTo(75,310);
+ctx.lineTo(225,310);
+ctx.lineTo(225,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of hotplate
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(210,310);
+ctx.lineTo(220,345);
+ctx.lineTo(80,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.beginPath(); //Base rect button
+ctx.moveTo(100,315);
+ctx.lineTo(100,318);
+ctx.lineTo(168,318);
+ctx.lineTo(168,315);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.beginPath();//Red button
+ctx.strokeStyle = "red";
+ctx.arc(190,325,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.strokeStyle ="grey";//water bottle base
+ctx.beginPath();
+ctx.roundRect(635,360,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //water bottle cap
+ctx.roundRect(648,330,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.lineWidth = 10;
+ctx.strokeStyle = "grey"; //Spray tube 
+ctx.beginPath();
+ctx.moveTo(668,330);
+ctx.lineTo(668,290);
+ctx.lineWidth = 8; 
+ctx.lineTo(648,300); 
+ctx.stroke();
+ctx.lineWidth = 1; 
+ctx.font = "15px Arial"; //Words on Water
+ctx.fillText("Water",645,410);
+ctx.fillStyle = "brown";//Test tube rack
+ctx.fillRect(405,335,20,100);
+ctx.fillRect(405,375,200,10);
+ctx.fillRect(405,405,200,10);
+ctx.fillRect(605,335,20,100);
+ctx.fillStyle = "grey"; //Test Tubes
+ctx.fillRect(437,345,15,90);
+ctx.fillRect(467,345,15,90);
+ctx.fillStyle = "red"; //Litmus
+ctx.fillRect(440,315,10,50);
+ctx.fillStyle = "blue"; //Litmus
+ctx.fillRect(470,315,10,50);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(175,150);
+ctx.lineTo(175,80);
+ctx.lineTo(125,80);
+ctx.lineTo(125,150);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(185,225);
+ctx.lineTo(115,225);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(125,200,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(150,185,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(160,145,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.fillStyle = "black";
+ctx.fillText("H2O",130,85);
+ctx.fillText("H2O",135,105);
+ctx.fillText("H2O",115,65);
+ctx.fillText("H2O",155,45);
+ctx.fillText("Choose the blue Cobalt(II) Chloride paper, press it to cause it to hover over the flask ",200,50);
+}
+
+
+if (co==3)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Hotplate surface
+ctx.moveTo(75,300);
+ctx.lineTo(75,310);
+ctx.lineTo(225,310);
+ctx.lineTo(225,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of hotplate
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(210,310);
+ctx.lineTo(220,345);
+ctx.lineTo(80,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.beginPath(); //Base rect button
+ctx.moveTo(100,315);
+ctx.lineTo(100,318);
+ctx.lineTo(168,318);
+ctx.lineTo(168,315);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.beginPath();//Red button
+ctx.strokeStyle = "red";
+ctx.arc(190,325,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.strokeStyle ="grey";//water bottle base
+ctx.beginPath();
+ctx.roundRect(635,360,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //water bottle cap
+ctx.roundRect(648,330,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.lineWidth = 10;
+ctx.strokeStyle = "grey"; //Spray tube 
+ctx.beginPath();
+ctx.moveTo(668,330);
+ctx.lineTo(668,290);
+ctx.lineWidth = 8; 
+ctx.lineTo(648,300); 
+ctx.stroke();
+ctx.lineWidth = 1; 
+ctx.font = "15px Arial"; //Words on Water
+ctx.fillText("Water",645,410);
+ctx.fillStyle = "brown";//Test tube rack
+ctx.fillRect(405,335,20,100);
+ctx.fillRect(405,375,200,10);
+ctx.fillRect(405,405,200,10);
+ctx.fillRect(605,335,20,100);
+ctx.fillStyle = "grey"; //Test Tubes
+ctx.fillRect(437,345,15,90);
+ctx.fillRect(467,345,15,90);
+ctx.fillStyle = "red"; //Litmus
+ctx.fillRect(440,315,10,50);
+ctx.fillStyle = "blue"; //Litmus
+ctx.fillRect(470,315,10,50);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(175,150);
+ctx.lineTo(175,80);
+ctx.lineTo(125,80);
+ctx.lineTo(125,150);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(185,225);
+ctx.lineTo(115,225);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(125,200,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(150,185,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(160,145,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.fillStyle = "blue"; //Litmus
+ctx.fillRect(145,20,10,50);
+ctx.fillStyle = "red"; //Litmus COVER
+ctx.fillRect(145,coy,10,coLength);
+ctx.fillStyle = "black";
+if(coy>=40)
+{
+ctx.fillText("Wait and watch as the Cobalt(II) Chloride paper changes colour",300,50);
+coy=coy-10;
+coLength=coLength+10;
+}
+if(coy<40)
+{
+ctx.font= "15px Arial";
+ctx.fillText("Congratulations you have completed the task! Press top left corner for main menu.",200,100);
+}
+
+}
+
+if (co==4)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Hotplate surface
+ctx.moveTo(75,300);
+ctx.lineTo(75,310);
+ctx.lineTo(225,310);
+ctx.lineTo(225,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of hotplate
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(90,310);
+ctx.lineTo(210,310);
+ctx.lineTo(220,345);
+ctx.lineTo(80,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.beginPath(); //Base rect button
+ctx.moveTo(100,315);
+ctx.lineTo(100,318);
+ctx.lineTo(168,318);
+ctx.lineTo(168,315);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.beginPath();//Red button
+ctx.strokeStyle = "red";
+ctx.arc(190,325,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.strokeStyle ="grey";//water bottle base
+ctx.beginPath();
+ctx.roundRect(635,360,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //water bottle cap
+ctx.roundRect(648,330,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.lineWidth = 10;
+ctx.strokeStyle = "grey"; //Spray tube 
+ctx.beginPath();
+ctx.moveTo(668,330);
+ctx.lineTo(668,290);
+ctx.lineWidth = 8; 
+ctx.lineTo(648,300); 
+ctx.stroke();
+ctx.lineWidth = 1; 
+ctx.font = "15px Arial"; //Words on Water
+ctx.fillText("Water",645,410);
+ctx.fillStyle = "brown";//Test tube rack
+ctx.fillRect(405,335,20,100);
+ctx.fillRect(405,375,200,10);
+ctx.fillRect(405,405,200,10);
+ctx.fillRect(605,335,20,100);
+ctx.fillStyle = "grey"; //Test Tubes
+ctx.fillRect(437,345,15,90);
+ctx.fillRect(467,345,15,90);
+ctx.fillStyle = "red"; //Litmus
+ctx.fillRect(440,315,10,50);
+ctx.fillStyle = "blue"; //Litmus
+ctx.fillRect(470,315,10,50);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(175,150);
+ctx.lineTo(175,80);
+ctx.lineTo(125,80);
+ctx.lineTo(125,150);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(100,300);
+ctx.lineTo(200,300);
+ctx.lineTo(185,225);
+ctx.lineTo(115,225);
+ctx.lineTo(100,300);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(125,200,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(150,185,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.beginPath();//Water vapour
+ctx.strokeStyle = "blue";
+ctx.arc(160,145,10,0, 2*Math.PI);
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.fillStyle = "red"; //Litmus
+ctx.fillRect(145,20,10,50);
+ctx.fillStyle = "blue"; //Litmus COVER
+ctx.fillRect(145,coy,10,coLength);
+ctx.fillStyle = "black";
+if(coy>=40)
+{
+ctx.fillText("Wait and watch as the Cobalt(II) Chloride paper changes colour",300,50);
+coy=coy-10;
+coLength=coLength+10;
+}
+if(coy<40)
+{
+ctx.font= "20px Arial";
+ctx.fillText("Congratulations you have completed the task!",200,100);
+}
+}
+
+
+}
+
+function chlorineTest()
+{
+menu = false;
+menuCheck = true;
+if(cl==0)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(350,325);
+ctx.lineTo(390,325);
+ctx.lineTo(380,360);
+ctx.lineTo(360,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillText("Add HCl(aq) into the test tube by pressing the bottle",50,50);
+}
+if(cl==1)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(350,325);
+ctx.lineTo(390,325);
+ctx.lineTo(380,360);
+ctx.lineTo(360,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillStyle = "#a6a49d"; //Substance from HCl + bleach reaction
+ctx.fillRect(160,315,25,30);
+ctx.fillText("Next add bleach into the test tube by pressing the bottle",50,50);
+}
+
+if(cl==2)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(350,325);
+ctx.lineTo(390,325);
+ctx.lineTo(380,360);
+ctx.lineTo(360,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillStyle = "#f2e9e9"; //Substance from HCl + bleach reaction
+ctx.fillRect(160,315,25,30);
+ctx.fillStyle = "black";
+ctx.fillText("Add rubber stopper to tube by pressing",50,50);
+}
+
+if(cl==3)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(150,210);
+ctx.lineTo(195,210);
+ctx.lineTo(185,245);
+ctx.lineTo(160,245);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillStyle = "#f2e9e9"; //Substance from HCl + bleach reaction
+ctx.fillRect(160,315,25,30);
+ctx.fillStyle = "black";
+ctx.fillText("Press the test tube to cause the reaction ",50,50);
+}
+
+if(cl==4)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(150,210);
+ctx.lineTo(195,210);
+ctx.lineTo(185,245);
+ctx.lineTo(160,245);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillStyle = "#f2e9e9"; //Substance from HCl + bleach reaction
+ctx.fillRect(160,315,25,30);
+ctx.fillStyle = "black";
+ctx.fillText("Cl2",160,268);
+ctx.fillText("Cl2",163,287);
+ctx.fillText("Remove the rubber stopper by pressing",50,50);
+}
+
+if(cl==5)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(350,325);
+ctx.lineTo(390,325);
+ctx.lineTo(380,360);
+ctx.lineTo(360,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillStyle = "#f2e9e9"; //Substance from HCl + bleach reaction
+ctx.fillRect(160,315,25,30);
+ctx.fillStyle = "black";
+ctx.fillText("Cl2",160,268);
+ctx.fillText("Cl2",163,287);
+ctx.fillText("Cl2",145,238);
+ctx.fillText("Cl2",185,215);
+ctx.fillText("Cl2",167,195);
+ctx.fillText("Place the litmus paper over the test tube by pressing",50,50);
+}
+
+if(cl==6)
+{
+ctx.clearRect(0,0,800,500);
+ctx.fillStyle = "grey"; // Side stand
+ctx.fillRect(0,300,200,20);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(350,325);
+ctx.lineTo(390,325);
+ctx.lineTo(380,360);
+ctx.lineTo(360,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.beginPath(); //Litmus test tube holder
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//Bleach bottle base
+ctx.beginPath();
+ctx.roundRect(625,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Bleach bottle cap
+ctx.roundRect(643,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on Bleach
+ctx.fillText("bleach",643,310);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.strokeStyle = "blue"; //Litmus Paper
+ctx.fillStyle = "blue"; 
+ctx.fillRect(465,250,8,75);
+ctx.strokeStyle = "blue"; //Litmus Paper OVER test tube
+ctx.fillStyle = "blue"; 
+ctx.fillRect(170,160,8,75);
+ctx.strokeStyle = "black"; //WHITE Litmus Paper OVER test tube
+ctx.fillStyle = "#f7e9e9"; 
+ctx.fillRect(170,cly,8,clLength);
+ctx.fillStyle = "grey"; //Grey test tube with reaction
+ctx.fillRect(160,245,25,100);
+ctx.fillStyle = "#f2e9e9"; //Substance from HCl + bleach reaction
+ctx.fillRect(160,315,25,30);
+ctx.fillStyle = "black";
+ctx.fillText("Cl2",160,268);
+ctx.fillText("Cl2",163,287);
+ctx.fillText("Cl2",145,238);
+ctx.fillText("Cl2",185,215);
+if(cly>=190)
+{
+ctx.fillText("Wait and watch as the litmus paper bleaches",50,50);
+cly=cly-10;
+clLength=clLength+10;
+}
+if(cly<190)
+{
+ctx.font= "15px Arial";
+ctx.fillText("Congratulations you have completed the task! Press top left corner for main menu.",200,100);
+}
+
+}
+
+}
+
+function limeTest()
+{
+menuCheck = true;
+menu = false;
+if(lime==0)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(85,230);
+ctx.lineTo(85,160);
+ctx.lineTo(35,160);
+ctx.lineTo(35,230);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";
+ctx.fillRect(300,268,40,30);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.fillStyle = "black";
+ctx.fillText("Pour limewater into the flask by pressing the bottle",50,50);
+}
+
+if(lime==1)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(85,230);
+ctx.lineTo(85,160);
+ctx.lineTo(35,160);
+ctx.lineTo(35,230);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";
+ctx.fillRect(300,268,40,30);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(95,305);
+ctx.lineTo(25,305);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.fillStyle = "black";
+ctx.fillText("Pour HCl into the test tubes by pressing the bottle",50,50);
+}
+
+if(lime==2)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(85,230);
+ctx.lineTo(85,160);
+ctx.lineTo(35,160);
+ctx.lineTo(35,230);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";
+ctx.fillRect(300,268,40,30);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(95,305);
+ctx.lineTo(25,305);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.strokeStyle = "black"; //White substance
+ctx.fillStyle = "#c4b895";
+ctx.fillRect(430,323,20,35);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fillText("Place Calcium Carbonate into the test tube by pressing the Calcium Carbonate",50,50);
+}
+
+if(lime==3)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(85,230);
+ctx.lineTo(85,160);
+ctx.lineTo(35,160);
+ctx.lineTo(35,230);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(300,268,40,30);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(430,278,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(10,380);
+ctx.lineTo(110,380);
+ctx.lineTo(95,305);
+ctx.lineTo(25,305);
+ctx.lineTo(10,380);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.strokeStyle = "black"; //White substance
+ctx.fillStyle = "#c4b895";
+ctx.fillRect(430,323,20,35);
+ctx.stroke();
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(435,325,10,10);
+ctx.fillStyle = "black";
+ctx.fillText("Press the rubber stopper to place the rubber stopper on the test tube",50,50);
+}
+
+
+if(lime==4)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(185,293);
+ctx.lineTo(185,223);
+ctx.lineTo(135,223);
+ctx.lineTo(135,293);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(300,268,40,30);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(210,360,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(195,370);
+ctx.lineTo(125,370);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.strokeStyle = "black"; //White substance
+ctx.fillStyle = "#c4b895";
+ctx.fillRect(210,405,20,35);
+ctx.stroke();
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(215,409,10,10);
+ctx.fillStyle = "black";
+ctx.fillText("Press the test tube to cause the reaction to occur",50,50);
+}
+
+if(lime==5)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(185,293);
+ctx.lineTo(185,223);
+ctx.lineTo(135,223);
+ctx.lineTo(135,293);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(300,268,40,30);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(210,360,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "blue";
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(195,370);
+ctx.lineTo(125,370);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.strokeStyle = "black"; //White substance
+ctx.fillStyle = "#c4b895";
+ctx.fillRect(210,405,20,35);
+ctx.stroke();
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(215,409,10,10);
+ctx.fillStyle = "black";
+ctx.font = "10px Arial";
+ctx.fillText("CO2",210,390);
+ctx.fillText("CO2",211,378);
+ctx.fillStyle = "black";
+ctx.font="15px Arial";
+ctx.fillText("Press the test tube again to show the CO2 moving into the flask",50,50);
+}
+
+if(lime==6)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(185,293);
+ctx.lineTo(185,223);
+ctx.lineTo(135,223);
+ctx.lineTo(135,293);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(300,268,40,30);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(210,360,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "#dbdad7";
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(195,370);
+ctx.lineTo(125,370);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle ="blue";
+ctx.fill();
+ctx.strokeStyle = "black"; //White substance
+ctx.fillStyle = "#c4b895";
+ctx.fillRect(210,405,20,35);
+ctx.stroke();
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(215,409,10,10);
+ctx.fillStyle = "black";
+ctx.font = "10px Arial";
+ctx.fillText("CO2",210,390);
+ctx.fillText("CO2",145,270);
+ctx.fillText("CO2",170,350);
+ctx.fillText("CO2",135,245);
+ctx.font = "15px Arial";
+ctx.fillText("Press the test tube again to show the CO2 reacting with limewater",50,50);
+}
+
+if(lime==7)
+{
+ctx.clearRect(0,0,800,500);
+ctx.beginPath(); //Flask
+ctx.strokeStyle = "grey"; 
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(185,293);
+ctx.lineTo(185,223);
+ctx.lineTo(135,223);
+ctx.lineTo(135,293);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle ="black"; //Test Tube Stopper
+ctx.beginPath();
+ctx.moveTo(200,325);
+ctx.lineTo(240,325);
+ctx.lineTo(230,360);
+ctx.lineTo(210,360);
+ctx.stroke();
+ctx.fillStyle = "black";
+ctx.fill();
+ctx.strokeStyle = "grey"; //Tube on test tube stopper
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.fillRect(215,235,5,90);
+ctx.stroke();
+ctx.lineWidth = 5; //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth
+ctx.moveTo(217,236);
+ctx.lineTo(190,200);
+ctx.lineTo(170,200);
+ctx.lineTo(165,210);
+ctx.stroke();
+ctx.lineWidth = 1;
+ctx.beginPath(); //Mass surface
+ctx.moveTo(245,300);
+ctx.lineTo(245,310);
+ctx.lineTo(395,310);
+ctx.lineTo(395,300);
+ctx.closePath();
+ctx.stroke();
+ctx.beginPath(); //Base of Mass
+ctx.strokeStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(260,310);
+ctx.lineTo(380,310);
+ctx.lineTo(390,345);
+ctx.lineTo(250,345);
+ctx.closePath();
+ctx.stroke();
+ctx.fillStyle="grey";
+ctx.fill();
+ctx.strokeStyle="white";
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(300,268,40,30);
+ctx.fillStyle = "brown"; //Test Tube rack
+ctx.fillRect(400,260,20,100);
+ctx.fillRect(600,260,20,100);
+ctx.fillRect(400,300,200,20);
+ctx.fillRect(400,330,200,20);
+ctx.beginPath(); //Test tube(s)
+ctx.fillStyle= "grey";
+ctx.fillRect(210,360,20,80);
+ctx.fillRect(460,278,20,80);
+ctx.strokeStyle ="grey";//HCl bottle base
+ctx.beginPath();
+ctx.roundRect(710,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //HCl bottle cap
+ctx.roundRect(728,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.strokeStyle ="grey";//Limewater bottle base
+ctx.beginPath();
+ctx.roundRect(635,260,75,110,15);
+ctx.stroke();
+ctx.beginPath(); //Limewater bottle cap
+ctx.roundRect(648,230,40,30,3);
+ctx.stroke(); 
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.font = "15px Arial"; //Words on HCl
+ctx.fillText("2M HCl",718,310);
+ctx.font = "15px Arial"; //Words on Lime
+ctx.fillText("Limewater",637,310);
+ctx.beginPath();//Water
+ctx.strokeStyle = "#dbdad7";
+ctx.moveTo(110,445);
+ctx.lineTo(210,445);
+ctx.lineTo(195,370);
+ctx.lineTo(125,370);
+ctx.lineTo(110,445);
+ctx.stroke();
+ctx.fillStyle ="dbdad7";
+ctx.fill();
+ctx.strokeStyle = "black"; //White substance
+ctx.fillStyle = "#c4b895";
+ctx.fillRect(210,405,20,35);
+ctx.stroke();
+ctx.fillStyle ="#dbdad7";//CaCO3
+ctx.fillRect(215,409,10,10);
+ctx.fillStyle = "black";
+ctx.font = "10px Arial";
+ctx.fillText("CO2",210,390);
+ctx.fillText("CO2",145,270);
+ctx.fillText("CO2",170,350);
+ctx.fillText("CO2",135,245);
+ctx.font = "15px Arial";
+ctx.fillText("Congratulations you are done! Go back to the main menu by pressing the top left hand corner.",50,50);
+}
+
+
+
+
+}
+
+function coTestExplained() 
+{
+menu = false;
+ctx.clearRect(0,0,800,500);
+ctx.font = "55px Arial";
+ctx.fillText("Explanation:", 250,75); 
+ctx.font = "30px Arial";
+ctx.fillText("Test for water vapour using Cobalt(II) Chloride Paper!", 50,120); 
+ctx.font = "20px Arial";
+ctx.fillText("Cobalt(II) Chloride paper (anhydrous)/(without water) is blue in colour.", 80,150); 
+ctx.font = "20px Arial";
+ctx.fillText(" However, in the presence of water, Cobalt(II) Chloride paper turns a distinct pink colour.", 10,175); 
+ctx.font = "20px Arial";
+ctx.fillText(" This should be the same case in the presence of water vapour.", 100,200); 
+ctx.font = "30px Arial";
+ctx.fillText("Steps*", 350,250); 
+ctx.font = "20px Arial";
+ctx.fillText("1. Place distilled water into erlenmeyer flask ", 100,290);
+ctx.font = "20px Arial";
+ctx.fillText("2. Place erlenmeyer flask onto hot plate ", 100,315);
+ctx.font = "20px Arial";
+ctx.fillText("3. Allow water to come to a boil ", 100,340);
+ctx.font = "20px Arial";
+ctx.fillText("4. Place Cobalt(II) Chloride paper over the erlenmeyer flask", 100,365);
+ctx.font = "20px Arial";
+ctx.fillText("5. If blue then the paper becomes red, if red then the paper become blue", 100,390);
+ctx.font = "10px Arial";
+ctx.fillText("*Assuming all safety precautions and materials are present and followed", 100,450);
+}
+
+function clExplained() 
+{
+ menu = false;
+ctx.clearRect(0,0,800,500);
+ctx.font = "55px Arial";
+ctx.fillText("Explanation:", 250,75); 
+ctx.font = "30px Arial";
+ctx.fillText("Test for Chlorine Gas!", 260,120); 
+ctx.font = "20px Arial";
+ctx.fillText("Chlorine gas is produced from the reaction between bleach and HCl(aq)", 80,150); 
+ctx.font = "20px Arial";
+ctx.fillText("Litmus paper under Chlorine gas should be bleached becoming a whtie colour", 35,175); 
+ctx.font = "30px Arial";
+ctx.fillText("Steps*", 350,250); 
+ctx.font = "20px Arial";
+ctx.fillText("1. Add HCl(aq) and bleach into a test tube ", 100,290);
+ctx.font = "20px Arial";
+ctx.fillText("2. Put rubber stopper on the test tube ", 100,315);
+ctx.font = "20px Arial";
+ctx.fillText("3. Shake the tube to cause a reaction between HCl(aq) and bleach ", 100,340);
+ctx.font = "20px Arial";
+ctx.fillText("4.Open the test tube containing Cl2(g)", 100,365);
+ctx.font = "20px Arial";
+ctx.fillText("5. Place a blue litmus paper over the open test tube", 100,390);
+ctx.font = "18px Arial";
+ctx.fillText("6. The paper is now in contact with Cl2(g), it should become red then white (bleached)", 100,415);
+ctx.font = "10px Arial";
+ctx.fillText("*Assuming all safety precautions and materials are present and followed", 100,450);
+}
+
+function limeTestExplained()
+{
+menu = false;
+ctx.clearRect(0,0,800,500);
+ctx.font = "55px Arial";
+ctx.fillText("Explanation:", 250,75); 
+ctx.font = "30px Arial";
+ctx.fillText("Test for Carbon Dioxide!", 260,120); 
+ctx.font = "20px Arial";
+ctx.fillText("Carbon dioxide when reacted with limewater should form a milky white precipitate!", 40,150); 
+ctx.font = "20px Arial";
+ctx.fillText("CO2(g) can be created from the reaction of Calcium Carbonate with HCl(aq)", 67,175); 
+ctx.font = "30px Arial";
+ctx.fillText("Steps*", 350,250); 
+ctx.font = "20px Arial";
+ctx.fillText("1.Pour limewater into erlenmeyer flask ", 100,290);
+ctx.font = "20px Arial";
+ctx.fillText("2. Pour 2M HCl(aq) into a test tube ", 100,315);
+ctx.font = "20px Arial";
+ctx.fillText("3. Proceed to add Calcium Carbonate to the test tube with HCl(aq) ", 100,340);
+ctx.font = "20px Arial";
+ctx.fillText("4.Bubble the gas from the test tube into the erlenmeyer flask with limewater", 100,365);
+ctx.font = "20px Arial";
+ctx.fillText("5. The limewater should now be white and milky/cloudy; this is the precipiate formed", 100,390);
+ctx.font = "10px Arial";
+ctx.fillText("*Assuming all safety precautions and materials are present and followed", 100,450);
+}
+
+function endPage()
+{
+menu = false;
+ctx.clearRect(0,0,800,500);
+}
+
+function credits()
+{
+menu = false;
+menuCheck = true;
+ctx.clearRect(0,0,800,500);
+ctx.font="55px Arial"
+ctx.fillText("Thank You!",250,75);
+ctx.font="17px Arial";
+ctx.fillText("https://www.w3schools.com/js/js_htmldom_eventlistener.asp",20,110); //Sources Used for Project
+ctx.fillText("https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element",20,130);
+ctx.fillText("http://www.java2s.com/Tutorials/Javascript/Canvas_How_to/Event/Handle_onclick_event.htm",20,150);
+ctx.fillText("https://www.w3schools.com/jsref/event_onclick.asp",20,170);
+ctx.fillText("https://www.w3schools.com/jsref/obj_mouseevent.asp",20,190);
+ctx.fillText("https://developer.mozilla.org/en-US/docs/Web/API/setInterval",20,210);
+ctx.fillText("https://forum.freecodecamp.org/t/setinterval-not-working/482339/5",20,230);
+ctx.fillText("https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineWidth",20,250);
+ctx.fillText("https://www.w3schools.com/jsref/met_win_settimeout.asp",20,270);
+ctx.fillText("https://stackoverflow.com/questions/9184702/settimeout-not-delaying-a-function-call",20,290);
+ctx.fillText("https://weekendprojects.dev/posts/javascript-settimeout-not-working/",20,310);
+ctx.fillText("https://stackoverflow.com/questions/4738595/how-do-i-delay-a-function-call-for-5-seconds",20,330);
+ctx.fillText("https://www.w3schools.com/jsref/event_pagex.asp",20,350);
+ctx.fillText("https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX",20,370);
+ctx.fillText("https://www.youtube.com/watch?v=P_gPlbExHv0&t=275s",20,390);
+ctx.fillText("https://www.youtube.com/watch?v=DS1i4f8lUm8",20,410);
+ctx.fillText("https://www.youtube.com/watch?v=tTNIwj24cZU",20,430);
+ctx.fillText("https://www.youtube.com/watch?v=LiAvDpl5aJA",20,450);
+}
+
+
+function draw()
+{
+ if (counter == 0)
+ {
+ splashScreen();
+ }
+ 
+ else if (counter == 1)
+ {
+  mainMenu();
+ }
+  else if (counter == 2)
+ {
+ bnTestExplained(); 
+ }
+  else if (counter == 3)
+ {
+ burningTest(); 
+ }
+  else if (counter == 4)
+ {
+ glTestExplained(); 
+ }
+  else if (counter == 5)
+ {
+  glowingTest();
+ }
+  else if (counter == 6)
+ {
+  coTestExplained();
+ }
+  else if (counter == 7)
+ {
+  cobaltChlorideTest();
+ } 
+ else if (counter == 8)
+ {
+  clExplained();
+ }
+  else if (counter == 9)
+ {
+  chlorineTest();
+ }
+  else if (counter == 10)
+ {
+  limeTestExplained();
+ } 
+ else if (counter == 11)
+ {
+  limeTest();
+ } 
+ else if (counter == 12)
+ {
+  endPage();
+ }
+  else if (counter == 13)
+ {
+  credits();
+ }
+ 
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
